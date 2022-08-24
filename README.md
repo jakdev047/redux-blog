@@ -1,1 +1,1 @@
-## Redux Template
+## Redux
