@@ -1,0 +1,59 @@
+/*==================================
+* Author        : "Jubayer Alam Khan"
+* Template Name :  React Template
+* Version       : 1.0
+==================================== */
+
+/*=========== TABLE OF CONTENTS ===========
+
+==========================================*/
+
+/*==================================
+font-family: 'Poppins', sans-serif;
+==================================== */
+
+/*-------------------------------------
+	Fonts
+--------------------------------------*/
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"), url("../fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+/*-------------------------------------
+	variable
+--------------------------------------*/
+:root {
+  --black: #000000 !important;
+  --white: #ffffff !important;
+  --blue: #00024e !important;
+  --grey: #f8f9fc !important;
+  --neon: #02d8fb !important;
+  --red: #eb1b33 !important;
+  --gray: #e0dfdf !important;
+  --color-less: transparent !important;
+
+  --poppinsFont: "Poppins", sans-serif !important;
+}
+
+/*-------------------------------------
+	General css (Reset code)
+--------------------------------------*/
+*,
+p,
+a,
+span,
+div,
+label {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: var(--poppinsFont);
+}
+button[disabled] {
+  opacity: 0.1;
+}
