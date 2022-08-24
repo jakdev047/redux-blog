@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Blog from "../components/Blog";
 import FilterSearch from "../layout/filterSearch";
 import Footer from "../layout/footer";
 import Header from "../layout/header";
 
 export default function BlogPages() {
+  const { appName } = useSelector((state) => state?.appInfo);
+  const { blogs } = useSelector((state) => state?.blogs);
   return (
     <>
       <Header />
@@ -16,7 +19,7 @@ export default function BlogPages() {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
             <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-              ALL BLOGS ARE HERE
+              {appName}
             </h2>
             <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
@@ -25,8 +28,8 @@ export default function BlogPages() {
           </div>
 
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-            {[1, 2, 3]?.length > 0 &&
-              [1, 2, 3]?.map((blog, index) => <Blog key={index} />)}
+            {blogs?.length > 0 &&
+              blogs?.map((item, index) => <Blog key={index} item={item} />)}
           </div>
         </div>
       </div>

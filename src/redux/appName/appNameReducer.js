@@ -1,5 +1,5 @@
 const initialState = {
-    appName: "Redux App",
+    appName: "ALL BLOGS ARE HERE",
 };
 
 const appInfoReducer = (state = initialState, action) => {

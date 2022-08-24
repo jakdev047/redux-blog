@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function Blog() {
+export default function Blog({ item }) {
   return (
     <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
       <div className="flex-shrink-0">
         <img
           className="h-48 w-full object-cover"
-          src={"https://miro.medium.com/max/875/0*urj1fYqHHRPjgYvd.jpeg"}
+          src={item?.blogImage}
           alt="blog"
         />
       </div>
@@ -20,12 +20,12 @@ export default function Blog() {
               }}
               className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800"
             >
-              {"Article"}
+              {item?.blogCategory}
             </span>
           </p>
           <div className="block mt-1">
             <p className="text-xl font-semibold text-gray-900">
-              Learn React JS
+              {item?.blogName}
             </p>
           </div>
         </div>
@@ -38,7 +38,7 @@ export default function Blog() {
           >
             <img
               className="h-10 w-10 rounded-full"
-              src={"https://avatars.githubusercontent.com/u/73503432?v=4"}
+              src={`${item?.authorLogo}`}
               alt="authorLogo"
             />
           </div>
@@ -49,12 +49,12 @@ export default function Blog() {
               }}
               className="text-sm font-medium text-gray-900 hover:underline"
             >
-              Learn with sumit
+              {item?.authorName}
             </p>
             <div className="flex space-x-1 text-sm text-gray-500">
-              <time dateTime="2020-03-16">10 March, 2022</time>
+              <time dateTime="2020-03-16">{item?.blogDate}</time>
               <span aria-hidden="true">&middot;</span>
-              <span>8 min read</span>
+              <span>{item?.readTime}</span>
             </div>
           </div>
         </div>
