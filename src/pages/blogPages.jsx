@@ -7,7 +7,9 @@ import Header from "../layout/header";
 
 export default function BlogPages() {
   const { appName } = useSelector((state) => state?.appInfo);
-  const { blogs } = useSelector((state) => state?.blogs);
+  const { blogs, filterBlogs } = useSelector((state) => state?.blogs);
+
+  const landingData = filterBlogs?.length > 0 ? filterBlogs : blogs;
   return (
     <>
       <Header />
@@ -28,8 +30,10 @@ export default function BlogPages() {
           </div>
 
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-            {blogs?.length > 0 &&
-              blogs?.map((item, index) => <Blog key={index} item={item} />)}
+            {landingData?.length > 0 &&
+              landingData?.map((item, index) => (
+                <Blog key={index} item={item} />
+              ))}
           </div>
         </div>
       </div>
