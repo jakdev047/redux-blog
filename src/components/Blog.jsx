@@ -1,6 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { authorByFilterAction, categoryByFilterAction } from "../redux/blog/actions";
 
 export default function Blog({ item }) {
+  const dispatch = useDispatch();
+  const categoryFilterHandler = (categoryName) => {
+    dispatch(categoryByFilterAction(categoryName));
+  };
+
+  const authorFilterHandler = (authorName) => {
+    dispatch(authorByFilterAction(authorName));
+  };
   return (
     <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
       <div className="flex-shrink-0">
@@ -17,6 +27,7 @@ export default function Blog({ item }) {
             <span
               onClick={(e) => {
                 e.stopPropagation();
+                categoryFilterHandler(item?.blogCategory);
               }}
               className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800"
             >
@@ -33,6 +44,7 @@ export default function Blog({ item }) {
           <div
             onClick={(e) => {
               e.stopPropagation();
+              authorFilterHandler(item?.authorName);
             }}
             className="flex-shrink-0"
           >
@@ -46,6 +58,7 @@ export default function Blog({ item }) {
             <p
               onClick={(e) => {
                 e.stopPropagation();
+                authorFilterHandler(item?.authorName);
               }}
               className="text-sm font-medium text-gray-900 hover:underline"
             >

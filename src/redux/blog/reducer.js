@@ -1,5 +1,6 @@
 import { blogList } from "../../utility/blogData";
-import { SEARCH } from "./actionTypes";
+import { filterData } from "../../utility/filter";
+import { AUTHORBYFILTER, CATEGORYBYFILTER, SEARCH } from "./actionTypes";
 
 const initialState = {
   blogs: blogList,
@@ -19,6 +20,31 @@ const blogReducer = (state = initialState, action) => {
             ?.includes(action?.payload?.toLowerCase())
         ),
       };
+
+    case CATEGORYBYFILTER:
+      return {
+        ...state,
+        filterBlogs: filterData(
+          action?.payload === state?.blogCategories ? "" : action?.payload,
+          state?.authorNames,
+          state?.blogs
+        ),
+        blogCategories:
+          action?.payload === state?.blogCategories ? "" : action?.payload,
+      };
+
+    case AUTHORBYFILTER:
+      return {
+        ...state,
+        filterBlogs: filterData(
+          state?.blogCategories,
+          action?.payload === state?.authorNames ? "" : action?.payload,
+          state?.blogs
+        ),
+        authorNames:
+          action?.payload === state?.authorNames ? "" : action?.payload,
+      };
+
     default:
       return state;
   }
